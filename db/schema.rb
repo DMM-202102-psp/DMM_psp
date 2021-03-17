@@ -10,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_084029) do
+ActiveRecord::Schema.define(version: 2021_03_17_111942) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "customer_id"
+    t.string "postcode"
+    t.string "address"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -45,6 +49,14 @@ ActiveRecord::Schema.define(version: 2021_03_17_084029) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postcode"
+    t.string "address"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "phone_number"
+    t.boolean "is_valid", default: true
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -58,16 +70,35 @@ ActiveRecord::Schema.define(version: 2021_03_17_084029) do
   create_table "items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "name"
+    t.integer "price"
+    t.string "image_id"
+    t.boolean "is_active", default: true
+    t.integer "genre_id"
   end
 
   create_table "order_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
+    t.integer "order_id"
+    t.integer "item_id"
+    t.integer "quantity"
+    t.integer "making_status", default: 0
   end
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postcode"
+    t.integer "customer_id"
+    t.string "address"
+    t.string "name"
+    t.integer "carriage"
+    t.string "term", default: "0"
+    t.integer "total_price"
+    t.integer "status", default: 0
   end
 
 end
