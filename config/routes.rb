@@ -35,19 +35,17 @@ Rails.application.routes.draw do
     end
     resources :carts, only: [:index, :update, :destroy, :create] do
       member do
-       delete 'destroy_all' #routeにid含むのは問題ないか？
+        delete 'destroy_all' # routeにid含むのは問題ないか？
       end
     end
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show] do
       member do
-       post 'confirm'
-       get 'complete'
+        post 'confirm'
+        get 'complete'
       end
     end
   end
-
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
