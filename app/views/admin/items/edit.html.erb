@@ -1,0 +1,33 @@
+<h2>商品編集</h2>
+<%= form_with model:@admin_item, local:true do |f| %>
+  <div class="form-group">
+    <p>商品画像</p>
+    <%= f.attachment_field :image %>
+  </div>
+  <div class="form-group">
+    <p>商品名</p>
+    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%>
+  </div>
+  <div class="form-group">
+    <p>商品説明</p>
+    <%= f.text_field :description, autofocus: true, id:"inputDescription", placeholder:"Description"%>
+  </div>
+
+ <!-- <div class="form">-->
+ <!--   <p>ジャンル</p>-->
+ <!--   <%#= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box"}) %>-->
+　<!--</div>-->
+
+  <div class="form-group">
+    <p>税抜価格</p>
+    <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder:"Price"%>
+    <p>円</p>
+  </div>
+  
+  <%= form_with(model: user, local: true) do |form| %>
+    <%= form.radio_button :gender, :male %>
+  <%= form.radio_button :gender, :female %>
+　<% end %>
+
+  <%= f.submit "変更を保存", class: 'btn btn-success'%>
+<% end %>
