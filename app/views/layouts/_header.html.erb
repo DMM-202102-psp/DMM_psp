@@ -25,7 +25,7 @@
                   カート
                 </li>
                 <li class="nav-item">
-                  ログアウト
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
                 </li>
 
 　　　　　　　　<!--管理者がログイン時 -->
@@ -38,13 +38,14 @@
                   会員一覧
                 </li>
                 <li class="nav-item">
-                  注文理r系一覧
+                  注文履歴一覧
                 </li>
                 <li class="nav-item">
                   ジャンル一覧
                 </li>
                  <li class="nav-item">
-                  ログアウト
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
                 </li>
 
                 <!-- 会員・管理者がログアウト時 -->
@@ -56,10 +57,10 @@
                   商品一覧
                 </li>
                 <li class="nav-item">
-                  新規登録
+                       <%= link_to "新規登録", new_customer_registration_path %>
                 </li>
                 <li class="nav-item">
-                  ログイン
+                 <%= link_to "ログイン", new_customer_session_path %>
                 </li>
               <% end %>
 
