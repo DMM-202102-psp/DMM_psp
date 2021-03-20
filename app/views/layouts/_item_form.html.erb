@@ -1,6 +1,5 @@
 
-<%= form_with model:@item,local:true do |f| %>
-
+<%= form_with model: item, url: {controller: 'admin/items', action: 'create' }, local:true do |f| %>
 <div class="form-group">
         <%= f.label :"商品画像" %>
         <%= f.attachment_field :image %>
@@ -19,10 +18,7 @@
 
 <div class="form_group">
 <%= f.label :"ジャンル" %>
-  <%= f.select :genre_id, {'ケーキ': 1, 'プリン': 2, '焼き菓子': 3, 'キャンディ': 4}, prompt: "-- 選択してください --", class: "col-sm-9 is_sale" %>
-
-
-
+  <%= f.select :genre_id %>
 </div>
 
 <div class="form_group">

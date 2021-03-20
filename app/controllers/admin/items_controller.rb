@@ -8,8 +8,10 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to root_path, notice: "商品登録完了しました"
+
+    @item.genre_id = 1
+      @item.save!
+    redirect_to admin_root_path, notice: "商品登録完了しました"
   end
 
   def show
