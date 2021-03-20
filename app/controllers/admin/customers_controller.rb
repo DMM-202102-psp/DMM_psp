@@ -9,13 +9,13 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
-  # def edit
-  # end
-
   def update
      @customer = Customer.find(params[:id])
-     @customer.update(customer_params)
-     redirect_back(fallback_location: root_url)
+     if @customer.update(customer_params)
+     redirect_to admin_customer_path(@cu)
+     else
+     render "edit"
+     end 
   end
 end
 
