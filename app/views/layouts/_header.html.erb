@@ -1,5 +1,5 @@
  <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container">
           <a class="navbar-brand " href="/">LOGO</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
               <% if customer_signed_in? %>
 
               <li class="nav-item">
-                ようこそ、〜さん
+                ようこそさん
               </li>
                 <li class="nav-item">
                   マイページ
@@ -57,7 +57,7 @@
                   商品一覧
                 </li>
                 <li class="nav-item">
-                       <%= link_to "新規登録", new_customer_registration_path %>
+                 <%= link_to "新規登録", new_customer_registration_path %>
                 </li>
                 <li class="nav-item">
                  <%= link_to "ログイン", new_customer_session_path %>

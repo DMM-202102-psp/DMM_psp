@@ -20,7 +20,7 @@ class Customer < ApplicationRecord
    validates :phone_number, presence: true, format: { with:/\A\d{10,11}\z/ }
   #住所のバリデーション
    validates :address, presence: true
+
   # 郵便番号（ハイフンなし）のバリデーション
-   validates :postcode, presence: true, format: { with:/\A\d{7}\z/ }
-  
+  validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }
 end
