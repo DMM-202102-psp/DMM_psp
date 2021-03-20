@@ -1,12 +1,14 @@
 <h3>ジャンル編集</h3>
+<%= form_for @genre, url: admin_genre_path(@genre.id) do |f| %>
 <table>
-  <%= form_with model:@genre, local:true do |f| %>
+  <!--%= form_with model: @genre, remote:true do |f| %>-->
+  <!--%= form_with model: @genre, url: admin_genre_path, local:true do |f| %>-->
   <tb>
     <td>ジャンル名</td>
     <td>
       <%= f.text_field :name, class: "form-control name" %>
     </td>
-    <td><%= f.submit class: "btn btn-sm btn-success"　%></td>
+    <td><%= f.submit "update" %></td>
   </tb>
-  <% end %>
 </table>
+  <% end %>
