@@ -1,30 +1,35 @@
 <h2>商品詳細</h2>
 
-<%= attachment_image_tag(@item, :image, :fill, 100, 100, #fallback: "no-image-icon.jpg") %>
+<%= attachment_image_tag(@item, :image, :fill, 100, 100, ) %>
 
 <table>
     <tr>
         <th>商品名</th>
         <td><%= @item.name %></td>
     </tr>
+
     <tr>
         <th>商品説明</th>
         <td><%= @item.description %></td>
     </tr>
+
     <tr>
         <th>ジャンル</th>
         <td><%= @item.genre.name %></td>
     </tr>
+
     <tr>
         <th>税込価格<br>(税抜価格）</th>
         <th><%=%> <%= @item.price %></th>
     </tr>
+
     <tr>
         <th>販売ステータス</th>
-        <td><%= @items.is_valid ? "販売中" : "販売なし" %></td>
+        <td><%= @item.is_active ? "販売中" : "販売なし" %></td>
     </tr>
+
 </table>
- 
+
  <%= link_to '編集する', edit_admin_item_path(@item), class: "btn-sm btn-success edit_admin_item_#{@item.id}" %>
- 
- 
+
+
