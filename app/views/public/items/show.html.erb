@@ -1,0 +1,14 @@
+<h2>商品詳細</h2>
+<div>
+　<%= attachment_image_tag(@item, :image, size: "340x220", fallback: "no_image.jpg" ) %>
+　<%= @item.name %>
+  <%= @item.description %>
+  ¥<%= @item.price %>（税込）
+</div>
+
+<div>
+  <%= form_with model:@public_item, local:true do |f| %>
+  <%= f.select :item, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+  <%= f.submit "カートに入れる", class: "btn btn-success" %>
+  <% end %>
+</div>
