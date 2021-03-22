@@ -3,9 +3,10 @@ class Item < ApplicationRecord
   has_many :order_items
   belongs_to :genre
   attachment :image
-  
+
   def total_price
     item.price * quantity
   end 
   
+
 end
