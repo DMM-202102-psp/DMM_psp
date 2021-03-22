@@ -13,3 +13,9 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'
+
+    # 検証確認
+    # bundle exec rubocop --require rubocop-airbnb
+
+    # 実行コマンド
+    # bundle exec rubocop --require rubocop-airbnb -a
