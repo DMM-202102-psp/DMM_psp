@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
   def index
     @address.user_id = curennt_user.id
-    @user = user.book
+    @user = user.address
     @addresses = Address.all
     @address = Address.new
   end
@@ -32,6 +32,10 @@ class Public::AddressesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:name, :postcode, :address)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
