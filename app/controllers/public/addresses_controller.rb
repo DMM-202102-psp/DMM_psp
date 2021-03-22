@@ -1,5 +1,7 @@
 class Public::AddressesController < ApplicationController
   def index
+    @address.user_id = curennt_user.id
+    @user = user.book
     @addresses = Address.all
     @address = Address.new
   end
