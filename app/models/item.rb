@@ -4,4 +4,8 @@ class Item < ApplicationRecord
   belongs_to :genre
   attachment :image
   
+  def total_price
+    item.price * quantity
+  end 
+  
 end
