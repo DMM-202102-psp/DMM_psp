@@ -2,7 +2,7 @@
   <div class="row">
    <div class="clo-xs-10 col-xs-offset-1">
   <div class="text-center">
-<table class="table">
+
 <tr>
   <th>商品一覧
    <span>
@@ -12,7 +12,7 @@
 </tr>
 
 <% @items.each do |item| %>
-
+<table class="table">
 <tr>
   <th><%= attachment_image_tag(@item, :image, size: "340x220", fallback: "no_image.jpg" ) %></th>
 </tr>
@@ -26,7 +26,9 @@
 </tr>
 </table>
 <% end %>
+
   </div>
    </div>
   </div>
 </div>
+<%= paginate @items %>

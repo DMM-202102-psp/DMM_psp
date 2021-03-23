@@ -34,6 +34,7 @@
         <td><%= @customer.is_valid ? "有効" : "退会" %></td>
     </tr>
 
-    <%= link_to "編集する", edit_admin_customer_path(@customer) %>
-    <%= link_to "注文履歴一覧を見る"%>
+
 </table>
+<%= link_to "編集する", edit_admin_customer_path(@customer) %>
+    <%= link_to "注文履歴一覧を見る"%>
