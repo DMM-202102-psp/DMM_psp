@@ -20,11 +20,7 @@
     <div class="form_group">
       <%= form.radio_button :address, :entryaddress %>
       <%= form.label :address, "登録済住所から選択", {value: :entryaddress, style: "display: inline-block;"} %></br>
-      <%# @addresses.each do |address| %>
-        <%#= address.postcode %>
-        <%#= address.address %>
-        <%#= address.name %>
-      <%# end %>
+      <%= form.collection_select :address_id, Address.all, :id, :name %>
     </div>
     <div class="form_group">
       <%= form.radio_button :address, :addaddress %>
