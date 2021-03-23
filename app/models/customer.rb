@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :addresses
 
-  # 名前（姓）のバリデーション
+
   validates :last_name, presence: true, format: { with: /\A[一-龥ぁ-ん]/ }
   # 名前（名）のバリデーション
   validates :last_name, presence: true, format: { with: /\A[一-龥ぁ-ん]/ }
@@ -20,6 +20,7 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
   # 住所のバリデーション
   validates :address, presence: true
+
 
   # 郵便番号（ハイフンなし）のバリデーション
   validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }

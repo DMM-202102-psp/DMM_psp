@@ -5,11 +5,7 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations',
   }
 
-  devise_for :customers, controllers: {
-    sessions: 'customers/sessions',
-    passwords: 'customers/passwords',
-    registrations: 'customers/registrations',
-  }
+
 
   namespace :admin do
     root 'homes#top'
@@ -25,14 +21,15 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
     resources :items, only: [:index, :show]
-    resources :registrations
     resources :sessions
     resource :customers, only: [:show, :edit, :update] do
       member do
         patch 'withdrawal'
-        get 'unscraibe'
+        get 'unsubscribe'
       end
     end
+
+
     resources :carts, only: [:index, :update, :destroy, :create] do
       member do
         delete 'destroy_all' # routeにid含むのは問題ないか？
@@ -47,5 +44,11 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations',
+  }
+   resources :registrations
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
