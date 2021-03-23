@@ -28,7 +28,8 @@ Rails.application.routes.draw do
         get 'unscraibe'
       end
     end
-     resources :registrations
+
+
     resources :carts, only: [:index, :update, :destroy, :create] do
       member do
         delete 'destroy_all' # routeにid含むのは問題ないか？
@@ -42,11 +43,12 @@ Rails.application.routes.draw do
       end
     end
   end
+
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     passwords: 'customers/passwords',
     registrations: 'customers/registrations',
   }
-
+   resources :registrations
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
