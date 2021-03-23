@@ -1,9 +1,9 @@
 <h4>ショッピングカート</h4>
 <div>
-    <%= button_to "全てからにする", destroy_all_cart_path, method: :delete %>
+    <%= button_to "カートをからにする", destroy_all_cart_path(@carts), method: :delete, class: "btn-sm btn-danger" %>
 </div>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
      <th>商品名</th>
@@ -13,18 +13,37 @@
      <th></th>
     </tr>
   </thead>
-  <%= @carts.each do |cart| %>
+  <% sum = 0 %>
+  <% @carts.each do |cart| %>
   <tbody>
     <tr>
-     <td><%= cart.item.name %></td>
      <td>
-        <%= form_with model: @cart, url: {controller: 'public/carts', action: 'update' } local:true do |f| %>
-        <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-        <%= f.submit "変更" %>
+         <%= attachment_image_tag(@item, :image, format: 'jpeg', size: "50x50", fallback: "no_image.jpg") %>
+         <%= cart.item.name %>
+     </td>
+     <td><%= (cart.item.price * 1.1 ).to_i %></td>
+     <td>
+        <%= form_with model: cart, url: cart_path(cart), method: :patch do |f| %>
+        <%= f.hidden_field :item_id, :value => cart.item.id %>
+        <%= f.select :quantity, options_for_select((1..10).to_a, :selected => cart.quantity ), include_blank: '個数選択' %>
+        <%= f.submit "変更", class: "btn-sm btn-success" %>
         <% end %>
      </td>
-     <td><%= (cart.item.price * cart.item.quantity).to.i %></td>
-     <td><%= link_to '削除', "/carts/#{customer.item_id}", method: :delete %></td>
+     <td><%= cart.total_price.to_i %></td>
+    <% sum += cart.total_price.to_i %>
+     <td><%= link_to '削除する', cart_path(cart), :method => :delete, class: "btn-sm btn-danger" %></td>
     </tr>
+  <% end %>
   </tbody>
 </table>
+
+<div>
+  合計金額<%= sum %>
+</div>
+<div>
+ <%= link_to '買い物を続ける', root_path, class: "btn-sm btn-primary" %>
+</div>
+
+<div>
+ <%= link_to '注文情報入力', new_order_path, class: "btn-sm btn-success" %>
+</div>

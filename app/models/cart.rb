@@ -3,7 +3,7 @@ class Cart < ApplicationRecord
   belongs_to :item
   
   def total_price
-   items.to_a.sum { |item| item.total_price }
+   self.item.price * self.quantity * 1.1
   end 
   
 end

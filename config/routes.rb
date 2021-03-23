@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resource :customers, only: [:show, :edit, :update] do
       member do
         patch 'withdrawal'
-        get 'unscraibe'
+        get 'unsubscribe'
       end
     end
 
