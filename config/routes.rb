@@ -41,10 +41,10 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show] do
       member do
-        post 'confirm'
         get 'complete'
       end
     end
+    post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

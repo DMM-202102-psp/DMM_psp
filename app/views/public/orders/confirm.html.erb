@@ -1,6 +1,19 @@
 <h2>注文情報確認</h2>
 
-<div class="form-group">
-  <h4>支払方法</h4>
-  <%= order.term %>
+<%= form_with model: @order, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :"支払方法" %>
+    <%= @order.term %>
+  </div>
+  <div class="form-group">
+    <%= f.label :"お届け先" %>
+    <%= @order.postcode %>
+    <%= @order.address %>
+    <%= @order.name %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
+    <%= f.submit '注文を確定する' %>
+  </div>
+<% end %>
 

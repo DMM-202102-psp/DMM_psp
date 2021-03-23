@@ -8,14 +8,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-  end
-
-  def complete
+    @order = Order.new(order_params)
   end
 
   def create
-    @order = Order.new(item_params)
-     @order.save!
+    @order = Order.new(order_params)
+    @order.save
+  end
+
+  def complete
   end
 
   def index
@@ -24,9 +25,10 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
-  # private
-  # def order_params
-  #   params.require(:book).permit(:postcode, :address, :name)
-  # end
+  private
+
+    def order_params
+      params.require(:order).permit(:postcode, :address, :name, :carriage, :term, :total_price, :status)
+    end
 
 end
