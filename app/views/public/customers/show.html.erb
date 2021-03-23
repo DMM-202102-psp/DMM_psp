@@ -1,9 +1,9 @@
 <h3>マイページ</h3>
-<div>
-  <h4>登録情報</h4>
-  <%= link_to '編集する', edit_customers_path(@customer), class: "btn btn-success" %>
-</div>
-<div>
+
+
+  <span>登録情報</span><%= link_to '編集する', edit_customers_path(@customer), class: "btn btn-success" %>
+
+
   <table class="table">
     <tbody>
       <tr>
@@ -27,15 +27,12 @@
         <td><%= @customer.email %></td>
       </tr>
     </tbody>
-</div>
 
 <div>
-  <h4>配送先</h4>
-  <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
-  </div>
+  <span>配送先</span><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
+</div>
+<div>
+  <span>注文履歴</span><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+</div>
 
-<diV>
-  <h4>注文履歴</h4>
-  <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
-  </div>
-</diV>
+
