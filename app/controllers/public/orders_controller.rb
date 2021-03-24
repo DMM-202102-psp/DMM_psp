@@ -26,13 +26,14 @@ class Public::OrdersController < ApplicationController
       @order.address = @addressnew.address
       @order.name = @addressnew.name
     end
+    @carts = current_customer.carts
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    @carts
+    redirect_to complete_order_path
     #カートの中身をorder_detailに保存する作業を入れる
     #カートの中身を削除する作業が必要
     #終わった後のリダイレクト先を→完了画面
