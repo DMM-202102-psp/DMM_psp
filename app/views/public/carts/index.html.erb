@@ -29,8 +29,8 @@
         <%= f.submit "変更", class: "btn-sm btn-success" %>
         <% end %>
      </td>
-     <td><%= cart.total_price.to_i %></td>
-    <% sum += cart.total_price.to_i %>
+     <td><%= cart.total.to_i %></td>
+    <% sum += cart.total.to_i %>
      <td><%= link_to '削除する', cart_path(cart), :method => :delete, class: "btn-sm btn-danger" %></td>
     </tr>
   <% end %>
