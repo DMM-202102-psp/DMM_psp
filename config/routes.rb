@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:show, :update, :index]
     resources :order_details, only: [:update]
   end
 
@@ -38,10 +38,10 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show] do
       member do
-        post 'confirm'
         get 'complete'
       end
     end
+    post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
   end
 
   devise_for :customers, controllers: {
