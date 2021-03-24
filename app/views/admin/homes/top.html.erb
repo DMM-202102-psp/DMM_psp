@@ -14,8 +14,8 @@
         <tbody>
           <% @customers.each do |customer| %>
             <tr>
-              <td><%= customer.order.create_at %></td>
-              <td><%= customer.name %></td>
+              <td><%= customer.orders.create_at %></td>
+              <td><%= customer.last_name %></td>
               <td><%= customer.cart.quantity %></td>
 　　　　　　　<td><%= customer.order.status %></td>
 　　　　　　</tr>
