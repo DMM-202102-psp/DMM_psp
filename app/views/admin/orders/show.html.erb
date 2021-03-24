@@ -1,0 +1,49 @@
+<h3>注文履歴詳細</h3>
+
+<div class="container">
+  <div class="row">
+    <div></div>
+      <span>注文情報</span>
+      <table class="stripe-table">
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.create_at.strftime('%月/%月/%日') %></td>
+        </tr>
+         <tr>
+          <th>配送先</th>
+          <td>〒<%= @order.address %>様</td>
+        </tr>
+         <tr>
+          <th>支払方法</th>
+          <td><%= @order.term %></td>
+        </tr>
+         <tr>
+          <th>注文ステータス</th>
+          <td><%= @order.status %></td>
+        </tr>
+      </table>
+    </div>
+    
+  <div class="row">
+    <span>注文内容</span>
+    <table class="stripe-table">
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>単価（税込み）</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <% @orders.each do |order| %>
+      <tbody>
+        <tr>
+          <td><%= order.items.name %></td>
+          <td><%= order.items.price %></td>
+          <td><%= order.</td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
