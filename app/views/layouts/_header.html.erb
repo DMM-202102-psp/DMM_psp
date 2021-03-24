@@ -13,7 +13,7 @@
               <% if customer_signed_in? %>
 
               <li class="nav-item">
-                ようこそ、さん！
+                ようこそ、<%= current_customer.last_name %>さん！
               </li>
                 <li class="nav-item">
                   <%= link_to "マイページ", customers_path %>
@@ -22,7 +22,7 @@
                   <%= link_to "商品一覧", items_path %>
                 </li>
                 <li class="nav-item">
-                  カート
+                  <%= link_to "カート", carts_path %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
@@ -32,16 +32,18 @@
               <% elsif admin_signed_in? %>
 
                 <li class="nav-item">
-                   商品一覧
+                   <%= link_to "商品一覧", admin_path %>
                 </li>
                 <li class="nav-item">
-                  会員一覧
+                  <%= link_to "会員一覧", admin_customers_path %>
+
                 </li>
                 <li class="nav-item">
-                  注文履歴一覧
+                <%= link_to "注文履歴一覧"%>
+
                 </li>
                 <li class="nav-item">
-                  ジャンル一覧
+                  ジャンル一覧<%= link_to "ジャンル一覧", admin_genres_path %>
                 </li>
                  <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
