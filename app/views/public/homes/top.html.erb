@@ -36,7 +36,7 @@
 </tr>
 
 <tr>
-  <th><%= item.name %></th>
+  <th><%= link_to item.name, item_path(item) %></th>
 </tr>
 
 <tr>
@@ -51,5 +51,4 @@
 </div>
  <p class="text-right"><%= link_to "全ての商品を見る", items_path %></p>
 
-
-
+<%= paginate @items %>
