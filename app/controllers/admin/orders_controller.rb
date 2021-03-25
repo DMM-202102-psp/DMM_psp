@@ -8,6 +8,8 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @customers = Customer.all
+    # @order_item = @order.order_item
   end
 
 end

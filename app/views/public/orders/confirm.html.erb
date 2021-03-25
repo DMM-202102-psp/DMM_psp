@@ -18,17 +18,19 @@
         <%= attachment_image_tag(@item, :image, format: 'jpeg', size: "50x50", fallback: "no_image.jpg") %>
         <%= cart.item.name %>
       </td>
-      <td><%= (cart.item.price).to_i %></td>
+      <td><%= tax_price(cart.item.price).to_s(:delimited) %></td>
       <td><%= cart.quantity %></td>
-    <!-- <td><%#= cart.total_price.to_i %></td>-->
-    <!--<%# sum += cart.total_price.to_i %>-->
+      <td><%= sub_price(cart).to_s(:delimited) %></td>
+    <!--<%# sum += cart.total.to_i %>-->
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <div>
-  合計金額<%= sum %>
+  送料 800<br>
+  商品合計<%= total_price(@carts).to_s(:delimited)%><br>
+  請求金額<%= billing.to_s(:delimited) %>
 </div>
 
 <%= form_with model: @order, local:true do |f| %>
@@ -45,6 +47,7 @@
     <%= f.hidden_field :address, value: @order.address %>
     <%= @order.name %>
     <%= f.hidden_field :name, value: @order.name %>
+    <%= f.hidden_field :total_price %>
   </div>
   <div class="form-group">
     <%= f.submit '注文を確定する' %>
