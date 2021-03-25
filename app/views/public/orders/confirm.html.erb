@@ -20,15 +20,17 @@
       </td>
       <td><%= (cart.item.price).to_i %></td>
       <td><%= cart.quantity %></td>
-    <!-- <td><%#= cart.total_price.to_i %></td>-->
-    <!--<%# sum += cart.total_price.to_i %>-->
+      <td><%= cart.total.to_i %></td>
+    <% sum += cart.total.to_i %>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <div>
-  合計金額<%= sum %>
+  送料 800<br>
+  商品合計<%= sum %><br>
+  請求金額<%= sum + 800 %>
 </div>
 
 <%= form_with model: @order, local:true do |f| %>
