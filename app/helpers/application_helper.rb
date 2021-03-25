@@ -3,7 +3,7 @@ module ApplicationHelper
     (price * 1.1).floor
   end
   def sub_price(sub) #小計の計算
-    tax_price(sub.item.price * sub.quantity)
+    (tax_price(sub.item.price) * sub.quantity)
   end
   def total_price(totals) #合計金額
     price = 0
