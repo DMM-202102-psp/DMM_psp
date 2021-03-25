@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  include ApplicationHelper
+
   def new
     @order = Order.new
     @address = Address.new
@@ -29,6 +31,8 @@ class Public::OrdersController < ApplicationController
       @address.save
     end
     @carts = current_customer.carts
+    @order.total_price = total_price(@carts)
+    @order.term = params[:order][:term]
   end
 
   def create
