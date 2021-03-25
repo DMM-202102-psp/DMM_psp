@@ -1,7 +1,7 @@
 <%= form_with model: item, url: {controller: 'admin/items', action: 'create' }, local:true do |f| %>
 <div class="form-group">
   <%= f.label :image, '商品画像' %>
-  <%= f.attachment_field :image %>
+  <%#= f.attachment_field :image %>
 </div>
 
 <div class="form_group">
@@ -26,8 +26,12 @@
 
 <div class="form_group">
   <%= f.label :"販売ステータス" %>
-<label><%= f.radio_button :is_active, "販売中" %> 販売中 </label>
-<label><%= f.radio_button :is_active, "販売停止中" %> 販売停止中</label>
+  <%= f.radio_button(:is_active,true) %>
+  <%= f.label :is_active, '販売中', value: true %>
+  <%= f.radio_button(:is_active,false) %>
+  <%= f.label :is_active, '販売終了', value: false %>
+<!--<label><#%= f.radio_button :is_active,　true "販売中" %> 販売中 </label>-->
+<!--<label><#%= f.radio_button :is_active, "販売停止中" %> 販売停止中</label>-->
 
 <!-- select = チェックボックス生成 -->
 </div>

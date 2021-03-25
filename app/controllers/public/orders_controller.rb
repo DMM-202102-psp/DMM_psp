@@ -10,32 +10,41 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    if params[:order][:address] == "myaddress"
+    if params[:order][:address_selection] == "myaddress"
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:address] == "entryaddress"
+    elsif params[:order][:address_selection] == "entryaddress"
       @address = Address.find(params[:order][:address_id])
       @order.postcode = @address.postcode
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:address] == "addaddress"
-      @addressnew = Address.new
-      # @addressnew = Address.find(params[:order][:address_id])
-      @order.postcode = @addressnew.postcode
-      @order.address = @addressnew.address
-      @order.name = @addressnew.name
+    elsif params[:order][:address_selection] == "addaddress"
+      @address = Address.new
+      # @address = Address.find(params[:order][:address_id])
+      @address.postcode = @order.postcode
+      @address.address = @order.address
+      @address.name = @order.name
+      @address.customer_id = current_customer.id
+      @address.save
     end
+    @carts = current_customer.carts
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    @carts
-    #カートの中身をorder_detailに保存する作業を入れる
-    #カートの中身を削除する作業が必要
-    #終わった後のリダイレクト先を→完了画面
+    @order_items = current_customer.carts
+     @order_items.each do |cart|
+        order_item = @order.order_items.new
+        order_item.item_id = cart.item.id
+        order_item.price = cart.item.price
+        order_item.quantity = cart.quantity
+        order_item.save #38~44 カートの中身を保存
+        current_customer.carts.destroy_all #カートの中身を削除
+     end
+    redirect_to orders_path #確認の為現状は注文履歴へ遷移
   end
 
   def complete
@@ -43,7 +52,6 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-
   end
 
   def show

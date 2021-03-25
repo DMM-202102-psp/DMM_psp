@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-    @customers = Customer.all
+    @items = Item.all
     # @customer = Customer.find(params[:id])
     @items = Item.page(params[:page]).per(10)
   end

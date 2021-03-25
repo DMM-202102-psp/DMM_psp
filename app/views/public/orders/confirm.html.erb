@@ -1,5 +1,38 @@
 <h2>注文情報確認</h2>
 
+<table class="table table-bordered">
+  <thead>
+    <tr>
+     <th>商品名</th>
+     <th>単価（税込）</th>
+     <th>数量</th>
+     <th>小計</th>
+     <th></th>
+    </tr>
+  </thead>
+  <% sum = 0 %>
+  <% @carts.each do |cart| %>
+  <tbody>
+    <tr>
+      <td>
+        <%= attachment_image_tag(@item, :image, format: 'jpeg', size: "50x50", fallback: "no_image.jpg") %>
+        <%= cart.item.name %>
+      </td>
+      <td><%= (cart.item.price).to_i %></td>
+      <td><%= cart.quantity %></td>
+      <td><%= cart.total.to_i %></td>
+    <% sum += cart.total.to_i %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div>
+  送料 800<br>
+  商品合計<%= sum %><br>
+  請求金額<%= sum + 800 %>
+</div>
+
 <%= form_with model: @order, local:true do |f| %>
   <div class="form-group">
     <%= f.label :"支払方法" %>
