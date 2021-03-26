@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.all
     @order_detail = @order.order_items
     @customer = @order.customer
-   
+
    end
 
   def update
@@ -19,6 +19,7 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.all
     @customers = Customer.all
+    @customer = Customer.find(params[:id])
     # @order_item = @order.order_item
   end
 
