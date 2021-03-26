@@ -21,6 +21,10 @@ class Admin::OrdersController < ApplicationController
     @customers = Customer.all
     # @order_item = @order.order_item
   end
+  
+  def current_only
+     @order = Order.where(customer_id: params[:id])
+  end  
 
  private
 
