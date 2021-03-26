@@ -15,10 +15,9 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
-    byebug
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-     redirect_to admin_customers_path
+     redirect_to admin_customer_path(@customer)
     else
       render "edit"
     end

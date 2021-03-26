@@ -53,6 +53,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @order = Order.find(params[:id])
   end
 
   def index
