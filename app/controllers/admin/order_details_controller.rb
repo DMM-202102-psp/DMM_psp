@@ -1,11 +1,21 @@
 class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
+
   def update
     @order_detail = OrderItem.find(params[:id])#order_itemsのIDをとってくる。
     @order = @order_detail.order
     @order_detail.update(order_items_params)
 
-    redirect_to admin_orders_path
+    if @order_detail.making_status == "製作中"
+      @order.update(status: 2)
+    end
+    if @order.order_items.count == @order.order_items.where(making_status: "製作完了").count
+      @order.update(status: 3)
+    end
+
+
+    flash[:notice] = "製作ステータスを更新しました"
+    redirect_to admin_order_path(@order_detail.order)
   end
 
   private
