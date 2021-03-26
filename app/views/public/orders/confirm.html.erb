@@ -30,7 +30,7 @@
 <div>
   送料 800<br>
   商品合計<%= total_price(@carts).to_s(:delimited)%><br>
-  請求金額<%= billing.to_s(:delimited) %>
+  請求金額<%= (@order.total_price).to_s(:delimited) %>
 </div>
 
 <%= form_with model: @order, local:true do |f| %>
