@@ -13,7 +13,7 @@
      <th></th>
     </tr>
   </thead>
-  <% sum = 0 %>
+  <!--% sum = 0 %>-->
   <% @carts.each do |cart| %>
   <tbody>
     <tr>
@@ -38,7 +38,7 @@
 </table>
 
 <div>
-  合計金額<%= sum %>
+  合計金額<%= total_price(@carts) %>
 </div>
 <div>
  <%= link_to '買い物を続ける', root_path, class: "btn-sm btn-primary" %>
