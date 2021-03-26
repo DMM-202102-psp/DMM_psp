@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
       @address.save
     end
     @carts = current_customer.carts
-    @order.total_price = total_price(@carts)
+    @order.total_price = (total_price(@carts) + 800).to_i
     @order.term = params[:order][:term]
   end
 
