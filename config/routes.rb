@@ -5,11 +5,9 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations',
   }
 
-
-
   namespace :admin do
     root 'homes#top'
-    resources :sessions
+    # resources :sessions
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
@@ -21,7 +19,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
     resources :items, only: [:index, :show]
-    resources :sessions
+    # resources :sessions
     resource :customers, only: [:show, :edit, :update] do
       member do
         patch 'withdrawal'
