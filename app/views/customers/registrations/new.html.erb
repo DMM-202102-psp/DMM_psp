@@ -1,20 +1,19 @@
-
-
-
-<h2>新規会員登録</h2>
+<div class="container">
+    
+    <h2>新規会員登録</h2>
 
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
 
   <div class='row'>
-   <div class='col'>名前 </div>
-   <div class ='col'>
+   <div class='col-md-4'>名前 </div>
+   <div class ='col-md-4'>
      <div class="field">
     <%= f.label :last_name, "(姓)" %>
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "令和" %>
     </div>
    </div>
-   <div class ='col'>
+   <div class ='col-md-4'>
      <div class="field">
     <%= f.label :first_name, "(名)" %>
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "道子" %>
@@ -23,48 +22,60 @@
   </div>
   
   <div class='row'>
-   <div class='col'>フリガナ</div>
-   <div class ='col'>
+   <div class='col-md-4'>フリガナ</div>
+   <div class ='col-md-4'>
      <div class="field">
      <%= f.label :last_name_kana, "(セイ)" %>
      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "レイワ" %>
      </div>
    </div>
-   <div class ='col'>
+   <div class ='col-md-4'>
      <div class="field">
       <%= f.label :first_name_kana, "(メイ)" %>
       <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "ミチコ" %>
      </div>
    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+  <div class="row">
+      <!--<div class="field">-->
+      <div class="col-md-4">メールアドレス</div>
+      <div class="col-md-8"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></div>
+      <!--</div>-->
   </div>
-
-  <div class="field">
-    <%= f.label :postcode, "郵便番号（ハイフンなし）" %>
-    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "0000000" %>
+      
   </div>
-
-  <div class="field">
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %>
+  <div class="row">
+   <!--<div class="field">-->
+    <div class="col-md-4">郵便番号（ハイフンなし）</div>
+    <div class="col-md-8"><%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "0000000" %></div>
+  <!--</div>-->
   </div>
-
-  <div class="field">
+  <div class="row">
+    <!--<div class="field">-->
+   <div class="col-md-4"> <%= f.label :address, "住所" %></div>
+    <div class="col-md-8"><%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %></div>
+  <!--</div>-->
+  </div>
+  
+  <div class="row">
+  <!--<div class="field">-->
     <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
     <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "0000000000" %>
+  <!--</div>-->
   </div>
-
-  <div class="field">
+  
+  <div class="row">
+     <!--<div class="field">-->
     <%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <!--</div>--> 
   </div>
+  
+  
+  
 
   <div class="field">
     <%= f.label :password_confirmation , "パスワード（確認用）"%>
@@ -79,3 +90,7 @@
 <h2>既に登録済みの方</h2>
 
 <p><%= link_to 'こちら', new_customer_session_path %>からログインしてください</p>
+
+</div>
+
+

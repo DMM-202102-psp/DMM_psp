@@ -1,4 +1,6 @@
 class Admin::HomesController < ApplicationController
+    before_action :authenticate_admin!
+
   def top
     @items = Item.all
     # @customer = Customer.find(params[:id])

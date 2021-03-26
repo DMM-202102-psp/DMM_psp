@@ -6,7 +6,11 @@ class Admin::OrdersController < ApplicationController
     @order_detail = @order.order_items
     @customer = @order.customer
 
+<<<<<<< HEAD
    end
+=======
+  end
+>>>>>>> 5cad5daef204ea2ef752674a28df5dad729cd474
 
   def update
     @order = Order.find(params[:id])
