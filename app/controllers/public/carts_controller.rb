@@ -1,4 +1,6 @@
 class Public::CartsController < ApplicationController
+  before_action :authenticate_customer!
+ 
   
   def index
    @carts = current_customer.carts
@@ -6,18 +8,20 @@ class Public::CartsController < ApplicationController
   end
 
   def create
-    
   # if @cart.blank?
       @cart = Cart.new
       @cart.customer_id = current_customer.id
       @cart.item_id = params[:cart][:item_id]
       @cart.quantity = params[:cart][:quantity]
-      @cart.save
-  # else
+      if @cart.save
+       redirect_to carts_path, flash: {success: "商品をカートに追加しました"}
+      else flash[:danger] = "個数を選択してください"
+			 redirect_back(fallback_location: root_url)
+		  end
+    # else
   #   @cart = current_customer.carts.find_by(item_id: params[:cart][:item_id])
   #   @cart.item.quantity += params[:quantity].to_i
   #   @cart.save
-    redirect_to carts_path
   # end  
   end
   
@@ -38,9 +42,6 @@ class Public::CartsController < ApplicationController
     @cart.destroy_all
     redirect_to '/carts'
   end
-
-  
-
 
 private
 
