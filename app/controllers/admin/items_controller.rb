@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @items = Item.all
     @items = Item.page(params[:page]).per(10)
@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save!
-    redirect_to "item_path(item)", notice: "商品登録完了しました"
+    redirect_to admin_item_path(@item), notice: "商品登録完了しました"
   end
 
   def show

@@ -5,7 +5,7 @@ class Admin::OrderDetailsController < ApplicationController
     @order = @order_detail.order
     @order_detail.update(order_items_params)
 
-    redirect_to admin_order_path(@order)
+    redirect_to admin_orders_path
   end
 
   private
