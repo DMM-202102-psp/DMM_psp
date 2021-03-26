@@ -12,7 +12,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save!
-    redirect_to admin_root_path, notice: "商品登録完了しました"
+    redirect_to "item_path(item)", notice: "商品登録完了しました"
   end
 
   def show
