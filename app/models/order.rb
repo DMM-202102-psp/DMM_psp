@@ -7,4 +7,8 @@ class Order < ApplicationRecord
     self.postcode + self.address + self.name
   end
   
+   validates :term, presence: true
+   validates :postcode, presence: true
+   validates :address, presence: true
+   validates :name, presence: true
 end
