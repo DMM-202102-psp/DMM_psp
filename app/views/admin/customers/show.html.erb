@@ -37,4 +37,8 @@
 
 </table>
 <%= link_to "編集する", edit_admin_customer_path(@customer) %>
+<<<<<<< HEAD
     <%= link_to "注文履歴一覧を見る", admin_orders_path(@customer) %>
+=======
+    <%= link_to "注文履歴一覧を見る", admin_orders_path(@customer), class: "customer_#{@customer.id}" %>
+>>>>>>> 5cad5daef204ea2ef752674a28df5dad729cd474

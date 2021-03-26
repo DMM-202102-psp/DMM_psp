@@ -16,7 +16,8 @@
       <td><u><%= link_to customer.last_name, admin_customer_path(customer) %><%= link_to customer.first_name, admin_customer_path(customer) %></u></td>
       <td><%= customer.email %></td>
       <% if customer.is_valid == true %>
-        <td><span class="text-success">販売中</span></td>
+        <td><span class="text-success">有効
+        </span></td>
       <% else %>
         <td><span class="text-muted">退会</span></td>
       <% end %>
