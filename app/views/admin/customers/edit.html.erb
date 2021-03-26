@@ -6,7 +6,8 @@
      <th>会員ID</th>
      <th><%= @customer.id %></th>
    </tr>
-    <%= form_with model: [ :admin, @customer ], local:true do |f| %>
+    <%= form_with model: @customer, url: {controller: 'admin/customers', action: 'update' }, local:true do |f| %>
+<table>
    <tr>
      <th>氏名</th>
      <th><%= f.text_field :last_name %></th>

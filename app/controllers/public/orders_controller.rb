@@ -48,9 +48,8 @@ class Public::OrdersController < ApplicationController
         order_item.quantity = cart.quantity
         order_item.save #38~44 カートの中身を保存
         end
-      
     current_customer.carts.destroy_all #カートの中身を削除
-    redirect_to orders_path #確認の為現状は注文履歴へ遷移
+    redirect_to orders_complete_path #確認の為現状は注文履歴へ遷移
   end
 
   def complete
@@ -61,6 +60,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
