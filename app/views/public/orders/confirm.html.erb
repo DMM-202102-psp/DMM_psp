@@ -48,6 +48,7 @@
     <%= @order.name %>
     <%= f.hidden_field :name, value: @order.name %>
     <%= f.hidden_field :total_price %>
+    <%= f.hidden_field :carriage %>
   </div>
   <div class="form-group">
     <%= f.submit '注文を確定する' %>
