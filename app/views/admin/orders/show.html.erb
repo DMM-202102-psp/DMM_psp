@@ -4,14 +4,18 @@
   <div class="row">
     <div></div>
       <span>注文情報</span>
-      <table class="stripe-table">
+      <table class="table">
+        <tr>
+          <th>購入者</th>
+          <td><%= @order.name %></td>
+        </tr>
         <tr>
           <th>注文日</th>
-          <td><%= @order.create_at.strftime('%月/%月/%日') %></td>
+          <td><%= @order.created_at.strftime('%Y年%m月%d日') %></td>
         </tr>
          <tr>
           <th>配送先</th>
-          <td>〒<%= @order.address %>様</td>
+          <td>〒<%= @order.postcode %></br><%= @order.address %><%= @order.name %>様</td>
         </tr>
          <tr>
           <th>支払方法</th>
@@ -19,31 +23,63 @@
         </tr>
          <tr>
           <th>注文ステータス</th>
-          <td><%= @order.status %></td>
+          <td>
+            <%= form_with model:@order, url: { action: 'update' }, local:true do |f| %>
+            <%= f.select :status, options_for_select(Order.statuses.keys, :selected => @order.status) %>
+            <%= f.submit "更新", class: "btn btn-primary" %>
+            <% end %>
+          </td>
         </tr>
       </table>
     </div>
 
   <div class="row">
-    <span>注文内容</span>
-    <table class="stripe-table">
-      <thead>
-        <tr>
-          <th>商品</th>
-          <th>単価（税込み）</th>
-          <th>個数</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <% @orders.each do |order| %>
-      <tbody>
-        <tr>
-          <td><%= order.items.name %></td>
-          <td><%= order.items.price %></td>
-          <td><%#= order.%></td>
-        </tr>
-      </tbody>
+     <div class="col-8">
+       <table class="table">
+          <thead>
+          <tr>
+            <th>商品</th>
+            <th>単価（税込み）</th>
+            <th>個数</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+
+      <% @order_detail.each do |order_detail| %>
+        <tbody>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td>￥<%= tax_price(order_detail.price) %></td>
+            <td><%= order_detail.quantity %>個</td>
+            <td>￥<%= sub_price(order_detail) %></td>
+            <td>
+              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), local:true do |f| %>
+              <%= f.select :making_status, options_for_select(OrderItem.making_statuses.keys, :selected => order_detail.making_status) %>
+            </td>
+            <td><%= f.submit "更新", class: "btn btn-primary" %></td>
+            <% end %>
+          </tr>
+        </tbody>
       <% end %>
     </table>
-  </div>
+    </div>
+
+    <div class="col-4">
+      <table class="table">
+        <tr>
+          <th>商品合計</th>
+          <td>￥<%= total_price(@order_detail) %></td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td>￥800</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td> <%= @order.total_price %></td>
+        </tr>
+      </table>
+    </div>
 </div>
