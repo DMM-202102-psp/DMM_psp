@@ -37,11 +37,13 @@ Rails.application.routes.draw do
       end
     end
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    get '/orders/complete' => 'orders#complete', as: 'orders_complete'
     resources :orders, only: [:new, :create, :index, :show] do
     end
-     
+
      get '/orders/complete'
     post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
+
   end
 
   devise_for :customers, controllers: {

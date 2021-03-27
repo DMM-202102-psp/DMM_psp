@@ -1,11 +1,20 @@
-<h2>注文情報入力</h2>
+<div class="container">
+  <div class="row">
+      <h4 class="text-black bg-light my-4">注文情報入力</h4>
+  </div>
+</div>
 
 <%= form_with(model: @order, local: true, url: confirm_order_path) do |form| %>
-  <div class="form_group">
-    <%= form.label :"支払方法" %></br>
+<div class="container">
+<div class="row">
+  <div class="form_group ml-5">
+    <%= form.label :"支払方法" %>
+  <div class="form_group ml-10">
     <label><%= form.radio_button :term, "クレジットカード" %> クレジットカード </label></br>
     <label><%= form.radio_button :term, "銀行振込" %> 銀行振込 </label>
   </div>
+  </div>
+    </div>
 
   <%= form.label :"お届け先" %></br>
     <div class="form_group">

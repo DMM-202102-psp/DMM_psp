@@ -51,7 +51,7 @@
       <div class="col-md-8 mb-2">　　　<%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></div>
       <!--</div>-->
   </div>
-      
+
   <div class="row">
    <!--<div class="field">-->
     <div class="col-md-4 text-center mb-2">　　　　　　　　　　郵便番号（ハイフンなし）</div>
@@ -64,19 +64,20 @@
     <div class="col-md-8 mb-2">　　　<%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", size: 50 %></div>
   <!--</div>-->
   </div>
-  
+
   <div class="row">
   <!--<div class="field">-->
     <div class="col-md-4 text-center mb-2">　　　　　　　　　　<%= f.label :phone_number, "電話番号（ハイフンなし）" %></div>
     <div class="col-md-8 mb-2">　　　<%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "0000000000" %></div>
   <!--</div>-->
   </div>
-  
+
   <div class="row">
      <!--<div class="field">-->
    <div class="col-md-4 text-center mb-2">　　　　　　　　　<%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上)</em>
+
     <% end %>
    </div>     
     <div class="col-md-8 mb-2">　　　<%= f.password_field :password, autocomplete: "new-password" %></div>
@@ -88,6 +89,7 @@
     <div class="col-md-4 text-center mb-2">　　　　　　　　<%= f.label :password_confirmation , "パスワード（確認用）"%></div>
     <div class="col-bd-8 mb-2">　　　　<%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
    <!--</div>-->
+
 
   </div>
   
