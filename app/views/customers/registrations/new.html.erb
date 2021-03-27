@@ -1,5 +1,5 @@
-<div class="container">
-    
+<!--<div class="container">-->
+
     <h2>新規会員登録</h2>
 
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
@@ -20,7 +20,7 @@
      </div>
    </div>
   </div>
-  
+
   <div class='row'>
    <div class='col-md-4'>フリガナ</div>
    <div class ='col-md-4'>
@@ -42,7 +42,7 @@
       <div class="col-md-8"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></div>
       <!--</div>-->
   </div>
-      
+
   </div>
   <div class="row">
    <!--<div class="field">-->
@@ -56,14 +56,14 @@
     <div class="col-md-8"><%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %></div>
   <!--</div>-->
   </div>
-  
+
   <div class="row">
   <!--<div class="field">-->
     <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
     <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "0000000000" %>
   <!--</div>-->
   </div>
-  
+
   <div class="row">
      <!--<div class="field">-->
     <%= f.label :password, "パスワード" %>
@@ -71,11 +71,11 @@
     <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
-    <!--</div>--> 
+    <!--</div>-->
   </div>
-  
-  
-  
+
+
+
 
   <div class="field">
     <%= f.label :password_confirmation , "パスワード（確認用）"%>
@@ -91,6 +91,6 @@
 
 <p><%= link_to 'こちら', new_customer_session_path %>からログインしてください</p>
 
-</div>
+<!--</div>-->
 
 

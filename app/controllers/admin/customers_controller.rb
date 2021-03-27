@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
-  
-  
+
+
   def index
     @customers = Customer.page(params[:page]).per(10)
   end
@@ -15,7 +15,6 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
-    byebug
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
      redirect_to admin_customers_path

@@ -61,7 +61,6 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order.term = params[:order][:term]
   end
 
   private
