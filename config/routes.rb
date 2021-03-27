@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update, :index]
     resources :order_details, only: [:update]
   end
-
+  
+  get 'admin/orders/current_only/:id' => 'admin/orders#current_only', as: "current_only"
+  
+  
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
@@ -36,6 +39,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show] do
     end
+     
      get '/orders/complete'
     post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
   end

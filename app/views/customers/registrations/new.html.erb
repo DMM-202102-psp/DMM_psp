@@ -1,3 +1,4 @@
+
 <div class="container">
   
   <div class="row mt-2">
@@ -6,8 +7,10 @@
    </div>
   </div>
 
+
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
+
 
   <div class='row'>
    <div class='col-md-4 text-center'>名前 </div>
@@ -22,10 +25,12 @@
     <%= f.label :first_name, "(名)" %>
     　<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "道子" %>
      <!--</div>-->
+
    </div>
   </div>
-  
+
   <div class='row'>
+
    <div class='col-md-4 text-center mb-2'>　　フリガナ</div>
    <div class ='col-md-4 mb-2'>
      <!--<div class="field">-->
@@ -83,6 +88,7 @@
     <div class="col-md-4 text-center mb-2">　　　　　　　　<%= f.label :password_confirmation , "パスワード（確認用）"%></div>
     <div class="col-bd-8 mb-2">　　　　<%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
    <!--</div>-->
+
   </div>
   
   <div class="row">
@@ -101,6 +107,6 @@
   </div>
      <p class="ml-5"><%= link_to 'こちら', new_customer_session_path %>　からログインしてください</p>
 
-</div>
+<!--</div>-->
 
 
