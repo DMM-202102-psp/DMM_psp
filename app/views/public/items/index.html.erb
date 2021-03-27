@@ -11,19 +11,25 @@
    </span>
 </h3>
 <% @items.each do |item| %>
-<teble>
+
+
+<teble class="table">
+<thead>
+  <tr>
+   <th><%= link_to attachment_image_tag(item, :image, format: 'jpeg', size: "150x130", fallback: "no_image.jpg"), item_path(item) %></th>
+  </tr>
+</thead>
+
+<tbody>
 <tr>
-  <th>  <%= link_to attachment_image_tag(item, :image, format: 'jpeg', size: "210x200", fallback: "no_image.jpg"), item_path(item) %>
-  </th>
+  <td><%= item.name %></td>
 </tr>
 
 <tr>
-  <th><%= item.name %></th>
+  <td>¥<%= item.price %></td>
 </tr>
 
-<tr>
-  <th>¥<%= item.price %></th>
-</tr>
+</tbody>
 </teble>
 <% end %>
 
