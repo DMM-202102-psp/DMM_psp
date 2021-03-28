@@ -65,14 +65,14 @@
   <div class="row">
     <div class="col-md-10 mb-4">
       <h4 style="table-borderless">お届け先</h4>
-          <%= @order.postcode %>
-          <%= f.hidden_field :postcode, value: @order.postcode %>
+          〒<%= @order.postcode %>
+        <%= f.hidden_field :postcode, value: @order.postcode %></br>
           <%= @order.address %>
-          <%= f.hidden_field :address, value: @order.address %>
+          <%= f.hidden_field :address, value: @order.address %></br>
           <%= @order.name %>
           <%= f.hidden_field :name, value: @order.name %>
           <%= f.hidden_field :total_price %>
-          <%= f.hidden_field :carriage %>
+          <%= f.hidden_field :carriage %>様宛
     </div>
   </div>
   <div class="row">

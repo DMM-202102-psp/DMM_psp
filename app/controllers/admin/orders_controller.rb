@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.all
+    @orders = Order.order(updated_at: :desc).page(params[:page]).per(10)
     @customers = Customer.all
     # @order_item = @order.order_item
   end

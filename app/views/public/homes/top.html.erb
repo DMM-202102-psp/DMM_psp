@@ -19,17 +19,16 @@
 <div class="row">
 <% @items.each do |item| %>
 <div class="col-md-3">
-<div class="card">
-  <%= link_to attachment_image_tag(item, :image, format: 'jpeg', size: "335x200", fallback: "no_image.jpg"), item_path(item) %>
-<h5 class="text-center">
-<%= link_to item.name, item_path(item) %>
-</h5>
-<h5 class="text-center">
+<%= link_to attachment_image_tag(item, :image, format: 'jpeg', size: "320x240", fallback: "no_image.jpg"), item_path(item) %>
+<p class="text-left">
+<%= item.name %>
+</p>
+<p>
 ¥<%= item.price %>
-</h5>
-</div>
-</div>
+</p>
+ </div>
 <% end %>
+
   </div>
 
  <p class="text-right"><u><%= link_to "全ての商品を見る>", items_path %></u></p>

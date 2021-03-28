@@ -14,10 +14,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update, :index]
     resources :order_details, only: [:update]
   end
-  
+
   get 'admin/orders/current_only/:id' => 'admin/orders#current_only', as: "current_only"
-  
-  
+
+
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
