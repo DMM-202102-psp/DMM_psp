@@ -1,47 +1,43 @@
 <%= form_with model: item, url: {controller: 'admin/items', action: 'create' }, local:true do |f| %>
-<div class="form-group">
-  <%= f.label :image, '商品画像' %>
-  <%= f.attachment_field :image %>
-</div>
 
-<div class="form_group">
-  <%= f.label :"商品名" %>
-  <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "商品名" %>
-</div>
-
-<div class="form_group">
-  <%= f.label :"商品説明" %>
-  <%= f.text_area :description, autofocus: true, autocomplete: "description", placeholder: "ここに説明⽂を記述します" %>
-</div>
-
-<div class="form_group">
-  <%= f.label :"ジャンル" %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-</div>
-
-<div class="form_group">
-  <%= f.label :"税抜価格" %>
-  <%= f.text_field :price, autofocus: true, autocomplete: "price", placeholder: "1000" %> 円
-</div>
-
-<div class="form_group">
-  <%= f.label :"販売ステータス" %>
-  <%= f.radio_button(:is_active,true) %>
-  <%= f.label :is_active, '販売中', value: true %>
-  <%= f.radio_button(:is_active,false) %>
-  <%= f.label :is_active, '販売終了', value: false %>
-<!--<label><#%= f.radio_button :is_active,　true "販売中" %> 販売中 </label>-->
-<!--<label><#%= f.radio_button :is_active, "販売停止中" %> 販売停止中</label>-->
-
-<!-- select = チェックボックス生成 -->
-</div>
-
-<div class="form-group">
+<table class="table table-borderless table-sm">
+  <tr>
+    <td><%= f.label :image, '商品画像' %></td>
+    <td><%= f.attachment_field :image %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :"商品名" %></td>
+    <td> <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "商品名", size: 31 %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :"商品説明" %></td>
+    <td><%= f.text_area :description, autofocus: true, autocomplete: "description", placeholder: "ここに説明⽂を記述します", size: "30x8" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :"ジャンル" %></td>
+    <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "  　　--選択してください--  　　" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :"税抜価格" %></td>
+    <td><%= f.text_field :price, autofocus: true, autocomplete: "price", placeholder: "1000", size: 31 %> 円</td>
+  </tr>
+  <tr>
+    <td> <%= f.label :"販売ステータス" %></td>
+    <td><%= f.radio_button(:is_active,true) %>
+        <%= f.label :is_active, '販売中', value: true %>
+        <%= f.radio_button(:is_active,false) %>
+        <%= f.label :is_active, '販売終了', value: false %>
+    </td>
+  </tr>
+</table>
+ <div class="row">
+  <div class="col-md-4 mx-auto ">
   <% if current_page?(new_admin_item_path) %>
-    <%= f.submit "新規登録" %>
+    <%= f.submit "新規登録", class: "btn btn-success btn-block btn-lg"%>
     <% else %>
     <%= f.submit "変更を保存" %>
   <% end %>
+  </div>
+  
 </div>
-
 <% end %>

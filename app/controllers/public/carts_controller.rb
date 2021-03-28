@@ -28,19 +28,19 @@ class Public::CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
 		@cart.update(cart_params)
-		redirect_to '/carts'
+		redirect_to '/carts',  flash: {success: "商品の数量を変更しました"}
   end
 
   def destroy
     @cart = Cart.find_by(params[:id])
     @cart.destroy
-    redirect_to '/carts'
+    redirect_to '/carts', flash: {danger: "商品を削除しました"}
   end
 
   def destroy_all
     @cart = current_customer.carts
     @cart.destroy_all
-    redirect_to '/carts'
+    redirect_to '/carts', flash: {danger: "カートを空にしました"}
   end
 
 private

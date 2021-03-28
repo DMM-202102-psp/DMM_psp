@@ -8,8 +8,10 @@
   <div class="col-md-3 text-left">
     <table class="table table-borderless">
      <tr>
-       <th>登録情報</th>
-       <th><%= link_to '編集する', edit_customers_path(@customer), class: "btn btn-success" %></th>
+       <th>
+          <span class="mr-3">登録情報</span>
+          <span class=ml-3><%= link_to '編集する', edit_customers_path(@customer), class: "btn btn-success" %></span>
+       </th>
      </tr>
    </table>
   </div>
@@ -48,15 +50,19 @@
  </div>
   
   <div class="row">
-   <div class="col-md-1 text-left">
+   <div class="col-md-2 text-left">
      <table class="table table-borderless">
        <tr>
-        <th>配送先</th>
-        <th><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></th>
-      </tr>
+        <th>
+          <span class="mr-4">配送先</span>
+          <span class="ml-4"><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></span>
+        </th>
+        </tr>
       <tr>
-        <th>注文履歴</th>
-        <th><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></th>
+        <th>
+          <span class="mr-3">注文履歴</span>
+          <span class="ml-3"><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></span>
+        </th>
       </tr>
     </table>
    </div>
