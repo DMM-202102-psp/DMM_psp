@@ -75,7 +75,23 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 	- 製作ステータス(製作待ち/製作中/製作完了)
 - 注文ステータス、製作ステータスの更新ができます。
 ## 使用言語
+* HTML&CSS  
+* Ruby
+* フレームワーク
+	- Ruby on rails (5.2.4)
+
 ## Gem
+- device
+- rubocop-airbnb
+- bootstrap
+- jquery-rails
+- kaminari
+- refile
+- refile-mini_magick
+- byebyg
+- pry-byebug
+- pry-rails
+
 ## 作成者
 * DMM_psp
   * 可部晋太郎(https://github.com/shintarokabe)
