@@ -2,14 +2,14 @@ class Admin::HomesController < ApplicationController
     before_action :authenticate_admin!
 
   def top
-    @items = Item.all
+    @orders = Order.order(updated_at: :desc).page(params[:page]).per(10)
     # @customer = Customer.find(params[:id])
-
-    @items = Item.page(params[:page]).per(10)
   end
 
-  def item_params
-    params.require(:item).permit(:image_id, :name, :description, :genre_id, :price, :is_active)
+  private
 
-  end
+    def order_params
+      params.require(:order).permit(:postcode, :address, :name, :carriage, :term, :total_price, :status)
+    end
+
 end
