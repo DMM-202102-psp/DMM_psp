@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="col-md-3 mb-4 text-center">
+      <h4 style="background:#EEEEEE">注文情報入力</h4>
+    </div>
+  </div>
+  <%= form_with(model: @order, local: true, url: confirm_order_path) do |form| %>
+  <div class="row mt-3">
+    <div class="col-md-5 mb-4">
+      <h4 style="table-borderless">支払方法</h4>
+      <th><%= form.radio_button :term, "クレジットカード" %> クレジットカード </th></br>
+      <th><%= form.radio_button :term, "銀行振込" %> 銀行振込 </th>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-5 mb-4">
+      <h4 style="table-borderless">お届け先</h4>
+      <div class="form_group">
+        <%= form.radio_button :address_selection, :myaddress %>
+        <%= form.label :address_selection, "ご自身の住所", {value: :myaddress, style: "display: inline-block;"} %></br>
+        〒<%= current_customer.postcode %>
+        <%= current_customer.address %></br>
+        <%= current_customer.last_name %>
+        <%= current_customer.first_name %></br>
+      </div>
+      <p></p>
+      <div class="form_group">
+        <%= form.radio_button :address_selection, :entryaddress %>
+        <%= form.label :address_selection, "登録済住所から選択", {value: :entryaddress, style: "display: inline-block;"} %></br>
+        <%= form.collection_select :address_id, Address.all, :id, :full_address %>
+      </div>
+      <p></p>
+      <div class="form_group">
+        <%= form.radio_button :address_selection, :addaddress %>
+        <%= form.label :address_selection, "新しいお届け先", {value: :addaddress, style: "display: inline-block;"} %></br>
+      </div>
+      <div class="row">
+        <div class="col-md-6 text-left">郵便番号（ハイフンなし）</div>
+        <div class="col-md-2 mb-2"><%= form.text_field :postcode %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 text-left">住所</div>
+        <div class="col-md-2 mb-2"><%= form.text_field :address %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 text-left">宛名</div>
+        <div class="col-md-2 mb-2"><%= form.text_field :name %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-2">
+          <%= form.submit '確認画面へ進む', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

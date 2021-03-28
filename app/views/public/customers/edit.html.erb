@@ -1,0 +1,46 @@
+<div class="container">
+<div class="row my-3">
+  <div class="ml-5 pl-4">
+<h3 style="background:#DDDDDD">会員情報編集</h3>
+    <%= form_with model: @customer, url: {controller: 'public/customers', action: 'update' }, local:true do |f| %>
+    </div>
+    </div>
+
+
+<table>
+    <tr>
+     <th><%= f.label :"氏名" %></th>
+     <th><%= f.text_field :last_name %></th>
+     <th><%= f.text_field :first_name %></th>
+   </tr>
+   <tr>
+     <th><%= f.label :"フリガナ" %></th>
+     <th><%= f.text_field :last_name_kana %></th>
+     <th><%= f.text_field :first_name_kana %></th>
+   </tr>
+   <tr>
+     <th><%= f.label :"郵便番号" %></th>
+     <th><%= f.text_field :postcode %></th>
+   </tr>
+   <tr>
+     <th><%= f.label :"住所" %></th>
+     <th><%= f.text_field :address %></th>
+   </tr>
+   <tr>
+     <th><%= f.label :"電話番号" %></th>
+     <th><%= f.text_field :phone_number %></th>
+   </tr>
+   <tr>
+     <th><%= f.label :"メールアドレス" %></th>
+     <th><%= f.email_field :email %></th>
+   </tr>
+   <tr>
+   <th></th>
+    <th><%= f.submit "編集内容を保存", class:"btn btn-success"  %></th>
+    <th><%= link_to "退会する", unsubscribe_customers_path, method: :get, class:"btn btn-danger" %></th>
+   </tr>
+
+<% end %>
+
+ </table>
+  </div>

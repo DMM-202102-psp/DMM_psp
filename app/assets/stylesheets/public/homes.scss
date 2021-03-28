@@ -1,3 +1,14 @@
 // Place all the styles related to the public::homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hero {
+  background: image-url('color.jpg') center top; 
+  background-size: auto;
+  color: navy;
+} 
+
+.nav-item {
+  margin: 10px;
+  color: black;
+}
