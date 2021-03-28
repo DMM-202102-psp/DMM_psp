@@ -7,12 +7,14 @@
 　  <div class="col-md-4 col-lg-5 px-5 m-5">
 　    <div style="m-3">
 <h4><strong><%= @item.name %></strong></h4>
+<div style="margin-top: 30px;">
   <%= @item.description %>
-  <div style>¥<%= @item.price %>（税込）</div>
+  </div>
+  <div style="margin-top: 30px;">¥<%= @item.price %></div>
   <%= form_with model: @cart, url: {controller: 'public/carts', action: 'create' }, local:true do |f| %>
   <%= f.hidden_field :item_id, :value => @item.id %>
   <div style="padding-top: 100px; ">
-  <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+  <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択", %>
   <%= f.submit "カートに入れる", class: "btn btn-success" %>
   <% end %>
   </div>

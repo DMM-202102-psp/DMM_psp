@@ -1,8 +1,13 @@
-<h2>会員情報編集</h2>
+<div class="container">
+<div class="row my-3">
+  <div class="ml-5 pl-4">
+<h3 style="background:#DDDDDD">会員情報編集</h3>
     <%= form_with model: @customer, url: {controller: 'public/customers', action: 'update' }, local:true do |f| %>
+    </div>
+    </div>
+    
+     
 <table>
-
-
     <tr>
      <th><%= f.label :"氏名" %></th>
      <th><%= f.text_field :last_name %></th>
@@ -29,11 +34,13 @@
      <th><%= f.label :"メールアドレス" %></th>
      <th><%= f.email_field :email %></th>
    </tr>
-
-
-    <th><%= f.submit "編集内容の保存" %></th>
-    
+   <tr>
+   <th></th>
+    <th><%= f.submit "編集内容を保存", class:"btn btn-success"  %></th>
+    <th><%= button_to "退会する", unsubscribe_customers_path, method: :get, class:"btn btn-danger" %></th>
    </tr>
+    
 <% end %>
-<th><%= button_to "退会する", unsubscribe_customers_path, method: :get %></th>
+
  </table>
+  </div>
